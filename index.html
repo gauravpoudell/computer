@@ -3,223 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nepal NewsHub</title>
+<title>Nepal NewsHub Premium</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
-  background:#f6f7fb;
-  color:#111;
+  font-family:'Inter',sans-serif;
+  background:#0f1115;
+  color:#eaeaea;
 }
-
-header{
-  background:linear-gradient(135deg,#111,#2b2d42);
-  color:white;
-  padding:40px 20px;
-  text-align:center;
-}
-
-header h1{font-size:40px;margin:0;}
-header p{opacity:0.8;}
 
 nav{
+  position:sticky;
+  top:0;
   display:flex;
-  justify-content:center;
-  gap:10px;
-  padding:15px;
-  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 25px;
+  background:rgba(20,22,30,0.8);
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-nav button{
-  border:none;
+nav h1{
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+nav .links button{
+  margin-left:10px;
   padding:8px 14px;
+  border:none;
   border-radius:20px;
+  background:#1c1f2a;
+  color:#fff;
   cursor:pointer;
-  background:#e0e0e0;
   transition:0.3s;
 }
 
-nav button:hover{
+nav .links button:hover{
   background:#ff4757;
-  color:white;
+}
+
+.hero{
+  padding:60px 25px;
+  background:linear-gradient(135deg,#1c1f2a,#0f1115);
+}
+
+.hero h2{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  opacity:0.7;
+  max-width:600px;
 }
 
 .container{
-  max-width:1000px;
-  margin:auto;
-  padding:20px;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+  padding:25px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+@media(max-width:900px){
+  .container{grid-template-columns:1fr;}
 }
 
 .card{
-  background:white;
-  border-radius:12px;
-  padding:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  background:#161a24;
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:15px;
   transition:0.3s;
-  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.05);
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transform:translateY(-5px);
+  border-color:#ff4757;
 }
 
-.featured{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  margin:20px 0;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+.card h3{margin:0 0 8px 0;}
+
+.meta{font-size:12px;opacity:0.6;}
+
+.sidebar{
+  position:sticky;
+  top:80px;
+  height:fit-content;
+}
+
+.trending{
+  background:#161a24;
+  padding:15px;
+  border-radius:14px;
 }
 
 .badge{
   display:inline-block;
   padding:4px 10px;
+  font-size:11px;
   background:#ff4757;
-  color:white;
   border-radius:20px;
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-/* CONTACT PAGE */
-.contact{
-  background:white;
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
-  margin-top:30px;
-}
-
-.contact h2{
-  margin-top:0;
-}
-
-input, textarea{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-  outline:none;
-}
-
-button.submit{
-  background:#2b2d42;
-  color:white;
-  border:none;
-  padding:10px 15px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button.submit:hover{
-  background:#ff4757;
+  margin-bottom:8px;
 }
 
 footer{
   text-align:center;
   padding:20px;
-  margin-top:30px;
-  background:#111;
-  color:white;
+  opacity:0.6;
 }
 
-section{display:none;}
-section.active{display:block;}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Nepal NewsHub</h1>
-  <p>Modern News Experience</p>
-</header>
-
 <nav>
-  <button onclick="showSection('home')">Home</button>
-  <button onclick="showSection('news')">News</button>
-  <button onclick="showSection('contact')">Contact</button>
+  <h1>Nepal NewsHub</h1>
+  <div class="links">
+    <button onclick="filter('all')">All</button>
+    <button onclick="filter('sports')">Sports</button>
+    <button onclick="filter('tech')">Tech</button>
+    <button onclick="filter('world')">World</button>
+  </div>
 </nav>
+
+<div class="hero">
+  <h2>Breaking News in Nepal</h2>
+  <p>Live updates from politics, technology, sports, and Himalayan developments across Nepal.</p>
+</div>
 
 <div class="container">
 
-<!-- HOME -->
-<section id="home" class="active">
+<div>
 
-<div class="featured">
-  <span class="badge">Featured</span>
-  <h2>Nepal Enters New Tech Revolution Era</h2>
-  <p>Startups in Kathmandu are booming with AI and innovation driving growth across the country.</p>
+<div class="card sports">
+  <span class="badge">Sports</span>
+  <h3>Nepal Cricket Team Qualifies for Asia Cup Stage</h3>
+  <p class="meta">Kathmandu • 2 hours ago</p>
 </div>
 
-</section>
+<div class="card tech">
+  <span class="badge">Tech</span>
+  <h3>Kathmandu Startup Launches Nepali AI Translation Tool</h3>
+  <p class="meta">Lalitpur • 5 hours ago</p>
+</div>
 
-<!-- NEWS -->
-<section id="news">
-<h2>Latest News</h2>
+<div class="card world">
+  <span class="badge">World</span>
+  <h3>Everest Region Tourism Hits Record Growth</h3>
+  <p class="meta">Solukhumbu • 1 day ago</p>
+</div>
 
-<div class="grid">
+<div class="card sports">
+  <span class="badge">Sports</span>
+  <h3>ANFA League Sees Highest Attendance in Years</h3>
+  <p class="meta">Pokhara • 1 day ago</p>
+</div>
 
-  <div class="card">
-    <h3>Football League Expands</h3>
-    <p>Nepal’s national league adds new clubs for 2026 season.</p>
+<div class="card tech">
+  <span class="badge">Tech</span>
+  <h3>Digital Payments Surge Across Nepal Cities</h3>
+  <p class="meta">Nationwide • 2 days ago</p>
+</div>
+
+</div>
+
+<div class="sidebar">
+  <div class="trending">
+    <h3>Trending</h3>
+    <p>• Everest cleanup campaign expands</p>
+    <p>• Youth AI startups rising in Nepal</p>
+    <p>• New highway boosts remote villages</p>
+    <p>• Cricket popularity surges nationwide</p>
   </div>
-
-  <div class="card">
-    <h3>AI Startup Boom</h3>
-    <p>Young developers in Nepal are building global-level apps.</p>
-  </div>
-
-  <div class="card">
-    <h3>Tourism Hits Record High</h3>
-    <p>Everest region sees massive increase in visitors.</p>
-  </div>
-
 </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="contact">
-  <h2>Contact Us</h2>
-  <p>Have a story idea or feedback? Send us a message.</p>
-
-  <form onsubmit="sendMessage(event)">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button class="submit" type="submit">Send Message</button>
-  </form>
-
-  <p id="msg"></p>
-</div>
-</section>
 
 </div>
 
-<footer>
-© 2026 Nepal NewsHub
-</footer>
+<footer>© 2026 Nepal NewsHub Premium</footer>
 
 <script>
-function showSection(id){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function sendMessage(e){
-  e.preventDefault();
-  document.getElementById('msg').innerText = "Message sent successfully (demo only)";
+function filter(type){
+  const cards=document.querySelectorAll('.card');
+  cards.forEach(c=>{
+    if(type==='all') c.style.display='block';
+    else c.style.display=c.classList.contains(type)?'block':'none';
+  });
 }
 </script>
 
