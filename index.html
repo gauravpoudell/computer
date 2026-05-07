@@ -27,40 +27,15 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-nav h1{
-  font-size:18px;
-  letter-spacing:1px;
-}
-
-nav .links button{
-  margin-left:10px;
-  padding:8px 14px;
-  border:none;
-  border-radius:20px;
-  background:#1c1f2a;
-  color:#fff;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-nav .links button:hover{
-  background:#ff4757;
-}
+nav h1{font-size:18px;letter-spacing:1px;}
 
 .hero{
-  padding:60px 25px;
+  padding:50px 25px;
   background:linear-gradient(135deg,#1c1f2a,#0f1115);
 }
 
-.hero h2{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  opacity:0.7;
-  max-width:600px;
-}
+.hero h2{font-size:40px;margin-bottom:10px;}
+.hero p{opacity:0.7;max-width:600px;}
 
 .container{
   display:grid;
@@ -75,49 +50,95 @@ nav .links button:hover{
 
 .card{
   background:#161a24;
-  padding:18px;
   border-radius:14px;
+  overflow:hidden;
   margin-bottom:15px;
-  transition:0.3s;
   border:1px solid rgba(255,255,255,0.05);
+  cursor:pointer;
+  transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
   border-color:#ff4757;
 }
 
-.card h3{margin:0 0 8px 0;}
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
 
+.card-content{padding:15px;}
+
+.card h3{margin:0 0 8px 0;}
 .meta{font-size:12px;opacity:0.6;}
 
 .sidebar{
   position:sticky;
   top:80px;
-  height:fit-content;
 }
 
 .trending{
   background:#161a24;
   padding:15px;
   border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
 }
 
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  font-size:11px;
-  background:#ff4757;
-  border-radius:20px;
-  margin-bottom:8px;
+#articlePage{
+  display:none;
+  padding:25px;
 }
 
-footer{
-  text-align:center;
+.article-box{
+  max-width:800px;
+  margin:auto;
+  background:#161a24;
   padding:20px;
-  opacity:0.6;
+  border-radius:14px;
 }
 
+.article-box img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.back{
+  color:#ff4757;
+  cursor:pointer;
+  display:inline-block;
+  margin-bottom:15px;
+}
+
+.contact{
+  background:#161a24;
+  padding:20px;
+  border-radius:14px;
+  margin:25px;
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:none;
+  background:#0f1115;
+  color:white;
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  background:#ff4757;
+  color:white;
+  cursor:pointer;
+}
+
+footer{text-align:center;padding:20px;opacity:0.6;}
 </style>
 </head>
 
@@ -125,51 +146,41 @@ footer{
 
 <nav>
   <h1>Nepal NewsHub</h1>
-  <div class="links">
-    <button onclick="filter('all')">All</button>
-    <button onclick="filter('sports')">Sports</button>
-    <button onclick="filter('tech')">Tech</button>
-    <button onclick="filter('world')">World</button>
-  </div>
 </nav>
 
 <div class="hero">
   <h2>Breaking News in Nepal</h2>
-  <p>Live updates from politics, technology, sports, and Himalayan developments across Nepal.</p>
+  <p>Click any article to read full story</p>
 </div>
+
+<div id="homePage">
 
 <div class="container">
 
 <div>
 
-<div class="card sports">
-  <span class="badge">Sports</span>
-  <h3>Nepal Cricket Team Qualifies for Asia Cup Stage</h3>
-  <p class="meta">Kathmandu • 2 hours ago</p>
+<div class="card" onclick="openArticle(0)">
+  <img src="https://source.unsplash.com/800x400/?cricket">
+  <div class="card-content">
+    <h3>Nepal Cricket Team Qualifies for Asia Cup Stage</h3>
+    <p class="meta">Kathmandu • Sports</p>
+  </div>
 </div>
 
-<div class="card tech">
-  <span class="badge">Tech</span>
-  <h3>Kathmandu Startup Launches Nepali AI Translation Tool</h3>
-  <p class="meta">Lalitpur • 5 hours ago</p>
+<div class="card" onclick="openArticle(1)">
+  <img src="https://source.unsplash.com/800x400/?technology,kathmandu">
+  <div class="card-content">
+    <h3>Kathmandu Startup Builds Nepali AI Translation Tool</h3>
+    <p class="meta">Lalitpur • Tech</p>
+  </div>
 </div>
 
-<div class="card world">
-  <span class="badge">World</span>
-  <h3>Everest Region Tourism Hits Record Growth</h3>
-  <p class="meta">Solukhumbu • 1 day ago</p>
-</div>
-
-<div class="card sports">
-  <span class="badge">Sports</span>
-  <h3>ANFA League Sees Highest Attendance in Years</h3>
-  <p class="meta">Pokhara • 1 day ago</p>
-</div>
-
-<div class="card tech">
-  <span class="badge">Tech</span>
-  <h3>Digital Payments Surge Across Nepal Cities</h3>
-  <p class="meta">Nationwide • 2 days ago</p>
+<div class="card" onclick="openArticle(2)">
+  <img src="https://source.unsplash.com/800x400/?mountain,everest">
+  <div class="card-content">
+    <h3>Everest Tourism Hits Record Growth This Year</h3>
+    <p class="meta">Solukhumbu • World</p>
+  </div>
 </div>
 
 </div>
@@ -177,24 +188,69 @@ footer{
 <div class="sidebar">
   <div class="trending">
     <h3>Trending</h3>
-    <p>• Everest cleanup campaign expands</p>
-    <p>• Youth AI startups rising in Nepal</p>
-    <p>• New highway boosts remote villages</p>
-    <p>• Cricket popularity surges nationwide</p>
+    <p>• AI startups rising in Nepal</p>
+    <p>• Everest cleanup mission expands</p>
+    <p>• Cricket popularity surges</p>
   </div>
 </div>
 
 </div>
 
+</div>
+
+<div id="articlePage">
+  <span class="back" onclick="goBack()">← Back</span>
+  <div class="article-box" id="articleContent"></div>
+</div>
+
+<div class="contact">
+  <h2>Contact Us</h2>
+  <form onsubmit="send(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <p id="msg"></p>
+</div>
+
 <footer>© 2026 Nepal NewsHub Premium</footer>
 
 <script>
-function filter(type){
-  const cards=document.querySelectorAll('.card');
-  cards.forEach(c=>{
-    if(type==='all') c.style.display='block';
-    else c.style.display=c.classList.contains(type)?'block':'none';
-  });
+const articles=[
+{
+ title:"Nepal Cricket Team Qualifies for Asia Cup Stage",
+ img:"https://source.unsplash.com/800x400/?cricket",
+ content:"Nepal’s cricket team achieved a historic milestone by qualifying for the Asia Cup after strong regional performance."
+},
+{
+ title:"Kathmandu Startup Builds Nepali AI Translation Tool",
+ img:"https://source.unsplash.com/800x400/?technology,kathmandu",
+ content:"A Kathmandu startup has built an AI translation system for Nepali language gaining international attention."
+},
+{
+ title:"Everest Tourism Hits Record Growth",
+ img:"https://source.unsplash.com/800x400/?everest,mountain",
+ content:"Tourism in the Everest region has reached record levels due to improved infrastructure and global interest."
+}
+];
+
+function openArticle(i){
+ document.getElementById('homePage').style.display='none';
+ document.getElementById('articlePage').style.display='block';
+
+ document.getElementById('articleContent').innerHTML=
+ `<img src="${articles[i].img}"><h2>${articles[i].title}</h2><p>${articles[i].content}</p>`;
+}
+
+function goBack(){
+ document.getElementById('homePage').style.display='block';
+ document.getElementById('articlePage').style.display='none';
+}
+
+function send(e){
+ e.preventDefault();
+ document.getElementById('msg').innerText="Message sent (demo)";
 }
 </script>
 
