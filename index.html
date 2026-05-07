@@ -3,48 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nepal NewsHub - HTML Syllabus Project</title>
+<title>Nepal NewsHub</title>
 
-<!-- External CSS (simulated) -->
-<link rel="stylesheet" href="style.css">
-
-<!-- Embedded CSS -->
 <style>
 body{
-  font-family: Arial;
   margin:0;
-  background:#f5f5f5;
+  font-family:Arial;
+  background:#f6f7fb;
+  color:#111;
 }
+
+/* HERO HEADER */
 header{
-  background:#111;
+  background:linear-gradient(135deg,#111,#2b2d42);
   color:white;
-  padding:15px;
+  padding:40px 20px;
   text-align:center;
 }
-nav a{
-  color:white;
-  margin:10px;
-  text-decoration:none;
+
+header h1{
+  font-size:40px;
+  margin:0;
 }
-section{
+
+header p{
+  opacity:0.8;
+}
+
+/* CATEGORY BAR */
+nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:15px;
+  flex-wrap:wrap;
+}
+
+nav button{
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  background:#e0e0e0;
+  transition:0.3s;
+}
+
+nav button:hover{
+  background:#ff4757;
+  color:white;
+}
+
+/* GRID */
+.container{
+  max-width:1000px;
+  margin:auto;
   padding:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* CARDS */
+.card{
   background:white;
-  margin:10px;
-  border-radius:10px;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+  cursor:pointer;
 }
-.table{
-  width:100%;
-  border-collapse:collapse;
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
-.table th, .table td{
-  border:1px solid #333;
-  padding:8px;
+
+.card h3{
+  margin-top:0;
 }
+
+/* FEATURED */
+.featured{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin:20px 0;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  background:#ff4757;
+  color:white;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
 footer{
+  text-align:center;
+  padding:20px;
+  margin-top:30px;
   background:#111;
   color:white;
-  text-align:center;
-  padding:15px;
 }
 </style>
 </head>
@@ -53,125 +118,50 @@ footer{
 
 <header>
   <h1>Nepal NewsHub</h1>
-  <h2><i>HTML Learning Project</i></h2>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#news">News</a>
-    <a href="#form">Form</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <p>Modern News Experience</p>
 </header>
 
-<section id="home">
-  <h2>Welcome</h2>
-  <p>This website demonstrates <b>HTML syllabus topics</b> including <i>tables, forms, lists, and multimedia</i>.</p>
-  <p>Water formula: H<sub>2</sub>O | Einstein: E = mc<sup>2</sup></p>
-  <mark>Important: This is a student project</mark>
-</section>
+<nav>
+  <button>All</button>
+  <button>Sports</button>
+  <button>Tech</button>
+  <button>World</button>
+</nav>
 
-<section id="news">
-  <h2>Latest News (Ordered List)</h2>
-  <ol type="1">
-    <li>Nepal tourism increases</li>
-    <li>Tech startups rising in Kathmandu</li>
-    <li>Sports events gaining popularity</li>
-  </ol>
+<div class="container">
 
-  <h3>Categories (Unordered List)</h3>
-  <ul type="square">
-    <li>Sports</li>
-    <li>Technology</li>
-    <li>World</li>
-  </ul>
+<div class="featured">
+  <span class="badge">Featured</span>
+  <h2>Nepal Enters New Tech Revolution Era</h2>
+  <p>Startups in Kathmandu are booming with AI and innovation driving growth across the country.</p>
+</div>
 
-  <h3>Definition List</h3>
-  <dl>
-    <dt>HTML</dt>
-    <dd>Markup language for web pages</dd>
-    <dt>CSS</dt>
-    <dd>Styles web pages</dd>
-  </dl>
-</section>
+<h2>Latest News</h2>
 
-<section>
-  <h2>News Table</h2>
-  <table class="table">
-    <tr>
-      <th>Category</th>
-      <th>Headline</th>
-    </tr>
-    <tr>
-      <td>Sports</td>
-      <td>Nepal wins football match</td>
-    </tr>
-    <tr>
-      <td>Tech</td>
-      <td>New AI app launched</td>
-    </tr>
-  </table>
-</section>
+<div class="grid">
 
-<section id="form">
-  <h2>Subscribe Form</h2>
-  <form>
-    Name: <input type="text"><br><br>
-    Email: <input type="email"><br><br>
+  <div class="card">
+    <h3>Football League Expands</h3>
+    <p>Nepal’s national league adds new clubs for 2026 season.</p>
+  </div>
 
-    Gender:<br>
-    <input type="radio" name="g"> Male
-    <input type="radio" name="g"> Female<br><br>
+  <div class="card">
+    <h3>AI Startup Boom</h3>
+    <p>Young developers in Nepal are building global-level apps.</p>
+  </div>
 
-    Interests:<br>
-    <input type="checkbox"> Sports
-    <input type="checkbox"> Tech<br><br>
+  <div class="card">
+    <h3>Tourism Hits Record High</h3>
+    <p>Everest region sees massive increase in visitors.</p>
+  </div>
 
-    Message:<br>
-    <textarea></textarea><br><br>
+</div>
 
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<section>
-  <h2>Multimedia (HTML5)</h2>
-
-  <h3>Audio</h3>
-  <audio controls>
-    <source src="audio.mp3" type="audio/mp3">
-  </audio>
-
-  <h3>Video</h3>
-  <video width="300" controls>
-    <source src="video.mp4" type="video/mp4">
-  </video>
-
-  <h3>Canvas</h3>
-  <canvas id="myCanvas" width="200" height="100" style="border:1px solid black;"></canvas>
-
-  <h3>SVG</h3>
-  <svg width="100" height="100">
-    <circle cx="50" cy="50" r="40" stroke="black" fill="red"/>
-  </svg>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <address>
-    Nepal NewsHub<br>
-    Lamachaur, Pokhara<br>
-    Nepal
-  </address>
-
-  <p><a href="https://www.google.com">External Link Example</a></p>
-  <p><a href="#home">Back to Top</a></p>
-</section>
+</div>
 
 <footer>
-  <p>© 2026 Nepal NewsHub</p>
+© 2026 Nepal NewsHub
 </footer>
-
-<!-- Inline CSS example -->
-<p style="text-align:center;color:gray;">Inline CSS Example Text</p>
 
 </body>
 </html>
